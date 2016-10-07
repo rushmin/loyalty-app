@@ -31,6 +31,11 @@ public class AuthFilter implements Filter {
                 try {
                     JWSObject jwt = JWSObject.parse(encodedJWT);
                     user = (String) jwt.getPayload().toJSONObject().get("sub");
+
+                    if(user.contains("@carbon.super")){
+                        user = user.replace("@carbon.super", "");
+                    }
+
                     httpRequest.getSession().setAttribute("user", user);
 
                     APIClient apiClient = new APIClient();
