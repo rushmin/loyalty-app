@@ -63,14 +63,14 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url('img/contact-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Loyality</h1>
+                    <div class="page-heading">
+                        <h1>Earn</h1>
                         <hr class="small">
-                        <span class="subheading">Earn and Redeem your loyalty points</span>
+                        <span class="subheading">Earn your points by purchasing credits.</span>
                     </div>
                 </div>
             </div>
@@ -80,23 +80,28 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>View your points here</p>
-                    <p><a class="btn btn-primary btn-lg" href="points.jsp" role="button">View</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Earn points by purchasing credits</p>
-                    <p><a class="btn btn-success btn-lg" href="earn.jsp" role="button">Earn</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Redeem your points</p>
-                    <p><a class="btn btn-success btn-lg" href="redeem.jsp" role="button">Redeem</a></p>
-                </div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                <form action="purchase.do" method="get" novalidate >
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Amount</label>
+                            <input type="number" class="form-control" placeholder="Credit Amount" id="amount" name="amount" required data-validation-required-message="Please enter a number">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-default">Purchase</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

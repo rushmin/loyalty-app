@@ -45,61 +45,66 @@
                 <a class="navbar-brand" href="index.html">Loyality APP Demo</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="index.jsp">Home</a>
-                    </li>
-                    <li>
-                        <a href="#"><%= session.getAttribute("user") %></a>
-                    </li>
-                </ul>
-            </div>
+           <!-- Collect the nav links, forms, and other content for toggling -->
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right">
+                   <li>
+                       <a href="index.jsp">Home</a>
+                   </li>
+                   <li>
+                       <a href="#"><%= session.getAttribute("user") %></a>
+                   </li>
+               </ul>
+           </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
 
     <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Loyality</h1>
-                        <hr class="small">
-                        <span class="subheading">Earn and Redeem your loyalty points</span>
+        <!-- Set your background image for this header on the line below. -->
+        <header class="intro-header" style="background-image: url('img/contact-bg.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="page-heading">
+                            <h1>Redeem</h1>
+                            <hr class="small">
+                            <span class="subheading">Pay your bill with earned points.</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>View your points here</p>
-                    <p><a class="btn btn-primary btn-lg" href="points.jsp" role="button">View</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Earn points by purchasing credits</p>
-                    <p><a class="btn btn-success btn-lg" href="earn.jsp" role="button">Earn</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Redeem your points</p>
-                    <p><a class="btn btn-success btn-lg" href="redeem.jsp" role="button">Redeem</a></p>
+        <!-- Main Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+                    <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+                    <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Amount</label>
+                                <input type="number" class="form-control" placeholder="Amount" id="email" required data-validation-required-message="Please enter a number">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-default">Redeem</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
     <hr>
 

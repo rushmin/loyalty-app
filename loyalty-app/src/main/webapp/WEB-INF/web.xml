@@ -3,8 +3,17 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Loyalty App</display-name>
+  <display-name>Loyalty Portal</display-name>
 
+  <servlet>
+    <servlet-name>purchasing-servlet</servlet-name>
+    <servlet-class>org.wso2.sample.loyalty.servlet.PurchasingServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>purchasing-servlet</servlet-name>
+    <url-pattern>/purchase.do</url-pattern>
+  </servlet-mapping>
 
   <filter>
     <filter-name>auth-filter</filter-name>

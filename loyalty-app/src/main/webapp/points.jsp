@@ -1,3 +1,10 @@
+<%@ page import="org.wso2.sample.loyalty.APIClient" %>
+
+<%
+    String user = (String) session.getAttribute("user");
+    int points = ((APIClient)session.getAttribute("apiClient")).getPoints(user);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,14 +70,14 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url('img/about-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Loyality</h1>
+                    <div class="page-heading">
+                        <h1><%= points %></h1>
                         <hr class="small">
-                        <span class="subheading">Earn and Redeem your loyalty points</span>
+                        <span class="subheading">You have <%= points %> loyality points...!</span>
                     </div>
                 </div>
             </div>
@@ -79,29 +86,9 @@
 
     <!-- Main Content -->
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>View your points here</p>
-                    <p><a class="btn btn-primary btn-lg" href="points.jsp" role="button">View</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Earn points by purchasing credits</p>
-                    <p><a class="btn btn-success btn-lg" href="earn.jsp" role="button">Earn</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Redeem your points</p>
-                    <p><a class="btn btn-success btn-lg" href="redeem.jsp" role="button">Redeem</a></p>
-                </div>
-            </div>
-        </div>
+
     </div>
 
-    <hr>
 
     <!-- Footer -->
     <footer>
