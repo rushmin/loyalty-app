@@ -1,6 +1,7 @@
 package org.wso2.sample.loyalty.servlet;
 
 import com.nimbusds.jose.JWSObject;
+import net.minidev.json.JSONObject;
 import org.wso2.sample.loyalty.APIClient;
 
 import javax.servlet.*;
@@ -30,13 +31,26 @@ public class AuthFilter implements Filter {
 
                 try {
                     JWSObject jwt = JWSObject.parse(encodedJWT);
-                    user = (String) jwt.getPayload().toJSONObject().get("sub");
+                    JSONObject parsedPayload = jwt.getPayload().toJSONObject();
 
+                    user = (String) parsedPayload.get("sub");
                     if(user.contains("@carbon.super")){
                         user = user.replace("@carbon.super", "");
                     }
-
                     httpRequest.getSession().setAttribute("user", user);
+
+                    String impersonatedBy = (String) parsedPayload.get("http://wso2.org/claims/impersonating_user");
+                    if(impersonatedBy != null && impersonatedBy.contains("@carbon.super")){
+                        impersonatedBy = impersonatedBy.replace("@carbon.super", "");
+                    }
+                    httpRequest.getSession().setAttribute("impersonatedBy", impersonatedBy);
+
+                    String userDisplayName = user;
+                    if(impersonatedBy != null) {
+                        userDisplayName = String.format("%s (Impersonated By - %s)", userDisplayName, impersonatedBy);
+                    }
+                    httpRequest.getSession().setAttribute("userDisplayName", userDisplayName);
+
 
                     APIClient apiClient = new APIClient();
                     apiClient.getAccessToken(encodedJWT);

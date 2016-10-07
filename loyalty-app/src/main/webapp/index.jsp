@@ -52,7 +52,7 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="#"><%= session.getAttribute("user") %></a>
+                        <a href="#"><%= session.getAttribute("userDisplayName") %></a>
                     </li>
                 </ul>
             </div>
