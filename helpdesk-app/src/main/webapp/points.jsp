@@ -1,3 +1,10 @@
+<%@ page import="org.wso2.sample.loyalty.APIClient" %>
+
+<%
+    String user = (String) session.getAttribute("user");
+    int points = ((APIClient)session.getAttribute("apiClient")).getPoints(user);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,19 +51,33 @@
                 </button>
                 <a class="navbar-brand" href="index.html">Loyality APP Demo</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.jsp">Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><%= session.getAttribute("user") %></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-color: rgba(100, 100, 200, 04);">
+    <header class="intro-header" style="background-image: url('img/about-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>help desk</h1>
-                        <span class="subheading">View and Redeem your loyality points</span>
+                    <div class="page-heading">
+                        <h1><%= points %></h1>
+                        <hr class="small">
+                        <span class="subheading">You have <%= points %> loyality points...!</span>
                     </div>
                 </div>
             </div>
@@ -65,23 +86,9 @@
 
     <!-- Main Content -->
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>View your points here</p>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">View</a></p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="jumbotron">
-                    <p>Impersonate your points here</p>
-                    <p><a class="btn btn-success btn-lg" href="#" role="button">Impersonate</a></p>
-                </div>
-            </div>            
-        </div>
+
     </div>
 
-    <hr>
 
     <!-- Footer -->
     <footer>
