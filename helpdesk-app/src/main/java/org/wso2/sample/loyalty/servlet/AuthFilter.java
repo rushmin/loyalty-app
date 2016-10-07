@@ -1,6 +1,7 @@
 package org.wso2.sample.loyalty.servlet;
 
 import com.nimbusds.jose.JWSObject;
+import org.wso2.sample.loyalty.APIClient;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -19,15 +20,28 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         if(servletRequest instanceof HttpServletRequest){
-            HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
-            String encodedJWT = httpRequest.getHeader("X-JWT-Assertion".toLowerCase());
 
-            try {
-                JWSObject jwt = JWSObject.parse(encodedJWT);
-                String user = (String) jwt.getPayload().toJSONObject().get("sub");
-                httpRequest.getSession().setAttribute("user", user);
-            } catch (ParseException e) {
-                e.printStackTrace();
+            HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+            String user = (String) httpRequest.getSession().getAttribute("user");
+
+            if(user == null){
+
+                String encodedJWT = httpRequest.getHeader("X-JWT-Assertion".toLowerCase());
+
+                try {
+                    JWSObject jwt = JWSObject.parse(encodedJWT);
+                    user = (String) jwt.getPayload().toJSONObject().get("sub");
+                    httpRequest.getSession().setAttribute("user", user);
+
+                    APIClient apiClient = new APIClient();
+                    apiClient.getAccessToken(encodedJWT);
+
+                    httpRequest.getSession().setAttribute("apiClient", apiClient);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }

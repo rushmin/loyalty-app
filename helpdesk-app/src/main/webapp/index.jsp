@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Loyality APP Demo</title>
+    <title>HelpDesk APP Demo</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -49,10 +49,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="#"><%= session.getAttribute("user") %></a>
+                        <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="index.jsp">Home</a>
+                        <a href="#"><%= session.getAttribute("user") %></a>
                     </li>
                 </ul>
             </div>
@@ -69,7 +69,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
                         <h1>help desk</h1>
-                        <span class="subheading">View and Redeem your loyality points</span>
+                        <span class="subheading">Earn and Redeem your loyalty points</span>
                     </div>
                 </div>
             </div>
@@ -82,13 +82,13 @@
             <div class="col-lg-6 col-md-6">
                 <div class="jumbotron">
                     <p>View your points here</p>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">View</a></p>
+                    <p><a class="btn btn-primary btn-lg" href="points.jsp" role="button">View</a></p>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="jumbotron">
                     <p>Impersonate your points here</p>
-                    <p><a class="btn btn-success btn-lg" href="http://appmgt.proximus.com:8280/loyalty-portal?ForceAuthn=true" role="button">Impersonate</a></p>
+                    <p><a class="btn btn-success btn-lg" href="http://appmgt.proximus.com:8280/loyalty-portal?forceAuth=true" role="button">Impersonate</a></p>
                 </div>
             </div>
         </div>
