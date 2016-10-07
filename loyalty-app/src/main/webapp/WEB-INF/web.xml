@@ -10,9 +10,19 @@
     <servlet-class>org.wso2.sample.loyalty.servlet.PurchasingServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>redeeming-servlet</servlet-name>
+    <servlet-class>org.wso2.sample.loyalty.servlet.RedeemingServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>purchasing-servlet</servlet-name>
     <url-pattern>/purchase.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>redeeming-servlet</servlet-name>
+    <url-pattern>/redeem.do</url-pattern>
   </servlet-mapping>
 
   <filter>

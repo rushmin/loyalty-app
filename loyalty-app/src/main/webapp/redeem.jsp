@@ -85,12 +85,12 @@
                     <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
                     <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
                     <!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form action="redeem.do" method="get" novalidate >
 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Amount</label>
-                                <input type="number" class="form-control" placeholder="Amount" id="email" required data-validation-required-message="Please enter a number">
+                                <input type="number" name="amount" class="form-control" placeholder="Amount" id="email" required data-validation-required-message="Please enter a number">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
