@@ -23,7 +23,10 @@ public class PurchasingServlet extends HttpServlet{
         String username = (String) req.getSession().getAttribute("user");
 
         APIClient apiClient = (APIClient) req.getSession().getAttribute("apiClient");
-        apiClient.updatePoints(username, points);
+
+        int currentPoints = apiClient.getPoints(username);
+
+        apiClient.updatePoints(username, currentPoints + points);
 
         req.getRequestDispatcher("points.jsp").forward(req, resp);
 
