@@ -11,7 +11,6 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
-import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -22,23 +21,29 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Client for the loyalty API
  */
 public class APIClient {
 
-    private static final String API_ENDPOINT = "http://52.55.56.170:8282/loyality/1.0.0/reward/";
-
+    private final Map<String, String> configs;
+    private String apiEndpoint;
     private String accessToken;
+
+    public APIClient(Map<String, String> configs) {
+        this.configs = configs;
+        apiEndpoint = configs.get("loyaltyAPIEndpoint");
+    }
 
     public void getAccessToken(String jwt){
 
         try {
 
-            String tokenEndpoint = "http://52.55.56.170:8282/token";
-            String consumerKey = "4mo5hg2bqGHuIFf7FdJjWw_40coa";
-            String consumerSecret = "0FdK3CTXTkcfJ0rTu4hSeuPLHEka";
+            String tokenEndpoint = configs.get("tokenEndpoint");
+            String consumerKey = configs.get("consumerKey");
+            String consumerSecret = configs.get("consumerSecret");
 
             CloseableHttpClient httpclient = HttpClients.createDefault();
 
@@ -74,7 +79,7 @@ public class APIClient {
 
         String requestURL = null;
         try {
-            requestURL = API_ENDPOINT + URLEncoder.encode(username, "UTF-8");
+            requestURL = apiEndpoint + URLEncoder.encode(username, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -109,7 +114,7 @@ public class APIClient {
             return;
         }
 
-        String requestURL = API_ENDPOINT;
+        String requestURL = apiEndpoint;
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost pointUpdateRequest = new HttpPost(requestURL);

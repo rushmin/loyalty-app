@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Map;
 
 /**
  * Authentication / Authorization filter
@@ -52,7 +53,8 @@ public class AuthFilter implements Filter {
                     httpRequest.getSession().setAttribute("userDisplayName", userDisplayName);
 
 
-                    APIClient apiClient = new APIClient();
+                    Map<String, String> configs = (Map<String, String>) servletRequest.getServletContext().getAttribute("loyalty.configs");
+                    APIClient apiClient = new APIClient(configs);
                     apiClient.getAccessToken(encodedJWT);
 
                     httpRequest.getSession().setAttribute("apiClient", apiClient);
