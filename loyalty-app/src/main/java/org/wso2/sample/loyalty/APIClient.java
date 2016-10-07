@@ -18,6 +18,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +72,12 @@ public class APIClient {
             return -1;
         }
 
-        String requestURL = API_ENDPOINT + username;
+        String requestURL = null;
+        try {
+            requestURL = API_ENDPOINT + URLEncoder.encode(username, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet pointReadRequest = new HttpGet(requestURL);
