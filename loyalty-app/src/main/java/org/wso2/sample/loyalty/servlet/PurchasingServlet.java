@@ -28,7 +28,7 @@ public class PurchasingServlet extends HttpServlet{
 
         apiClient.updatePoints(username, currentPoints + points);
 
-        req.getRequestDispatcher("points.jsp").forward(req, resp);
+        resp.sendRedirect("points.jsp");
 
     }
 }

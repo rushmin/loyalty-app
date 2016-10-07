@@ -32,7 +32,7 @@ public class RedeemingServlet extends HttpServlet{
 
         apiClient.updatePoints(username, updatedPoints);
 
-        req.getRequestDispatcher("points.jsp").forward(req, resp);
+        resp.sendRedirect("points.jsp");
 
     }
 }
