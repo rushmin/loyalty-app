@@ -33,6 +33,5 @@
     </dependencies>
     <modules>
         <module>loyalty-app</module>
-        <module>helpdesk-app</module>
     </modules>
 </project>

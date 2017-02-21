@@ -1,6 +1,7 @@
 package org.wso2.sample.loyalty.servlet;
 
 import org.wso2.sample.loyalty.APIClient;
+import org.wso2.sample.loyalty.DataStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,11 +23,10 @@ public class PurchasingServlet extends HttpServlet{
 
         String username = (String) req.getSession().getAttribute("user");
 
-        APIClient apiClient = (APIClient) req.getSession().getAttribute("apiClient");
+        DataStore dataStore = DataStore.getInstance();
+        int currentPoints = dataStore.getPoints(username);
 
-        int currentPoints = apiClient.getPoints(username);
-
-        apiClient.updatePoints(username, currentPoints + points);
+        dataStore.updatePoints(username, currentPoints + points);
 
         resp.sendRedirect("points.jsp");
 

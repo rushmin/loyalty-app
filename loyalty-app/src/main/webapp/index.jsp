@@ -42,7 +42,6 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">Loyality APP Demo</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,7 +51,7 @@
                         <a href="index.jsp">Home</a>
                     </li>
                     <li>
-                        <a href="#"><%= session.getAttribute("userDisplayName") %></a>
+                        <a href="#"><%= session.getAttribute("user") %></a>
                     </li>
                 </ul>
             </div>
@@ -68,7 +67,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Loyality</h1>
+                        <h1>Loyalty Portal</h1>
                         <hr class="small">
                         <span class="subheading">Earn and Redeem your loyalty points</span>
                     </div>

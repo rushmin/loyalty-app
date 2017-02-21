@@ -1,6 +1,0 @@
-{
-  "tokenEndpoint":"http://52.55.56.170:8282/token",
-  "consumerKey":"4mo5hg2bqGHuIFf7FdJjWw_40coa",
-  "consumerSecret":"0FdK3CTXTkcfJ0rTu4hSeuPLHEka",
-  "loyaltyAPIEndpoint":"http://52.55.56.170:8282/loyality/1.0.0/reward/"
-}
