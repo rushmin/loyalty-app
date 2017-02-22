@@ -45,10 +45,13 @@ public class AuthFilter implements Filter {
                         if(user == null){
                             handleUnauthenticatedRequest(servletResponse);
                         }else{
-                            user = user.replace("is-wso2.com/", "");
+                            user = user.replace("IS-WSO2.COM", "");
                             if(user.contains("@carbon.super")){
                                 user = user.replace("@carbon.super", "");
                             }
+
+                            if(user.)
+
                             httpRequest.getSession().setAttribute("user", user);
                         }
                     } catch (ParseException e) {
