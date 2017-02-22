@@ -49,9 +49,6 @@ public class AuthFilter implements Filter {
                             if(user.contains("@carbon.super")){
                                 user = user.replace("@carbon.super", "");
                             }
-
-                            if(user.)
-
                             httpRequest.getSession().setAttribute("user", user);
                         }
                     } catch (ParseException e) {
