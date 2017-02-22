@@ -41,7 +41,7 @@ public class AuthFilter implements Filter {
 
                         System.out.println("parsedPayload " + parsedPayload.toJSONString());
 
-                        user = (String) parsedPayload.get("sub");
+                        user = (String) parsedPayload.get("Subject");
                         if(user == null){
                             handleUnauthenticatedRequest(servletResponse);
                         }else{
