@@ -45,6 +45,7 @@ public class AuthFilter implements Filter {
                         if(user == null){
                             handleUnauthenticatedRequest(servletResponse);
                         }else{
+                            user = user.replace("is-wso2.com/", "");
                             if(user.contains("@carbon.super")){
                                 user = user.replace("@carbon.super", "");
                             }
