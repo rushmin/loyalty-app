@@ -29,7 +29,7 @@ public class AuthFilter implements Filter {
 
             if(user == null){
 
-                String encodedJWTHeaderValue = httpRequest.getHeader("X-JWT-Assertion");
+                String encodedJWTHeaderValue = httpRequest.getHeader("x-jwt-assertion");
 
                 if(encodedJWTHeaderValue != null){
 
