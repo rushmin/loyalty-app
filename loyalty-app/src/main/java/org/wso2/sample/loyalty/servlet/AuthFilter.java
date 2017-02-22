@@ -31,11 +31,15 @@ public class AuthFilter implements Filter {
 
                 String encodedJWTHeaderValue = httpRequest.getHeader("x-jwt-assertion");
 
+                System.out.println("encodedJWTHeaderValue  " + encodedJWTHeaderValue );
+
                 if(encodedJWTHeaderValue != null){
 
                     try {
                         JWSObject jwt = JWSObject.parse(encodedJWTHeaderValue);
                         JSONObject parsedPayload = jwt.getPayload().toJSONObject();
+
+                        System.out.println("parsedPayload " + parsedPayload.toJSONString());
 
                         user = (String) parsedPayload.get("sub");
                         if(user == null){
